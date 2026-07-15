@@ -24,13 +24,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Prepare site folder
+        run: |
+          mkdir -p _site
+          cp -R assets favicon.svg icons.svg index.html 404.html CNAME .nojekyll manifest.webmanifest registerSW.js sw.js workbox-*.js _site/ 2>/dev/null || true
+          # keep CNAME for custom domain
+          test -f CNAME && cp CNAME _site/
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
       - name: Upload static site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
