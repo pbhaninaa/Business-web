@@ -1,1 +1,0 @@
-const e=[{label:"Home",to:"/",exact:!0},{label:"About",to:"/about"},{label:"Services",to:"/services"},{label:"Projects",to:"/projects"},{label:"Gallery",to:"/gallery"},{label:"Careers",to:"/careers"},{label:"News",to:"/news"},{label:"Contact",to:"/contact"}],t=[{label:"Request Quote",to:"/quote",cta:!0},{label:"Client Portal",to:"/portal",highlight:!0}];export{t as a,e as p};
