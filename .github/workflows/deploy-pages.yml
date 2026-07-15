@@ -27,8 +27,12 @@ jobs:
       - name: Prepare site folder
         run: |
           mkdir -p _site
-          cp -R assets favicon.svg icons.svg index.html 404.html CNAME .nojekyll manifest.webmanifest registerSW.js sw.js workbox-*.js _site/ 2>/dev/null || true
-          # keep CNAME for custom domain
+          # Copy the full static site (keep logos, favicons, PWA icons, etc.)
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name '.git' \
+            ! -name '.github' \
+            ! -name '_site' \
+            -exec cp -R {} _site/ \;
           test -f CNAME && cp CNAME _site/
 
       - name: Configure Pages
